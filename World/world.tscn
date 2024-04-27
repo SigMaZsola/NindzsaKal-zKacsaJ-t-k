@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://b867fsdgp2nkc"]
+
+[ext_resource type="Script" path="res://World/world.gd" id="1_x06oj"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_1x1vh"]
+[ext_resource type="PackedScene" uid="uid://bigstj8dtqpgd" path="res://Player/anglica.tscn" id="2_rw104"]
+[ext_resource type="Script" path="res://Water.gd" id="3_4k6wu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eymgo"]
+sky_top_color = Color(0.297397, 0.441353, 0.718357, 1)
+sky_horizon_color = Color(0.565456, 0.682666, 0.678029, 1)
+sky_curve = 0.212132
+ground_bottom_color = Color(0.000252398, 0.109451, 0.439034, 1)
+
+[sub_resource type="Sky" id="Sky_524ah"]
+sky_material = SubResource("ProceduralSkyMaterial_eymgo")
+
+[sub_resource type="Environment" id="Environment_w5hlc"]
+background_mode = 2
+sky = SubResource("Sky_524ah")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hy6fq"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brvoh"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_hy6fq")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hs2gb"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u5h0n"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_hs2gb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jbi1g"]
+noise_type = 3
+frequency = 0.001
+fractal_type = 2
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7k2l2"]
+seamless = true
+noise = SubResource("FastNoiseLite_jbi1g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n3y0"]
+render_priority = 0
+shader = ExtResource("2_1x1vh")
+shader_parameter/albedo = Color(0.233146, 0.37788, 0.601913, 1)
+shader_parameter/albedo2 = Color(0.462149, 0.56676, 0.72824, 1)
+shader_parameter/color_deep = Color(0.281596, 0.231373, 0.390865, 1)
+shader_parameter/color_shallow = Color(0.67684, 0.384045, 0.53976, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/wave_speed = 0.2
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/beers_law = 0.089
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.362
+shader_parameter/near = 0.5
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_brvoh")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_u5h0n")
+shader_parameter/wave = SubResource("NoiseTexture2D_7k2l2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xwda"]
+material = SubResource("ShaderMaterial_0n3y0")
+size = Vector2(500, 500)
+subdivide_width = 500
+subdivide_depth = 500
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_x06oj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w5hlc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.940098, 0.0859291, -0.329897, -0.23722, -0.859886, 0.452021, -0.244833, 0.503202, 0.828761, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0xwda")
+script = ExtResource("3_4k6wu")
+
+[node name="Anglica" parent="." instance=ExtResource("2_rw104")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02401, 0)
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 5, -10)
