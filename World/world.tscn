@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b867fsdgp2nkc"]
+[gd_scene load_steps=17 format=3 uid="uid://b867fsdgp2nkc"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_x06oj"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_1x1vh"]
-[ext_resource type="PackedScene" uid="uid://bigstj8dtqpgd" path="res://Player/anglica.tscn" id="2_rw104"]
 [ext_resource type="Script" path="res://Water.gd" id="3_4k6wu"]
+[ext_resource type="PackedScene" uid="uid://vjmt1tighhl7" path="res://Player/angelica.tscn" id="4_yomvq"]
+[ext_resource type="PackedScene" uid="uid://b8i1611aicgex" path="res://Player/floatingduck.tscn" id="5_7u0a3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eymgo"]
 sky_top_color = Color(0.297397, 0.441353, 0.718357, 1)
@@ -95,10 +96,17 @@ shadow_enabled = true
 mesh = SubResource("PlaneMesh_0xwda")
 script = ExtResource("3_4k6wu")
 
-[node name="Anglica" parent="." instance=ExtResource("2_rw104")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02401, 0)
+[node name="floatingduck" parent="." instance=ExtResource("5_7u0a3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43609, 7.17439, 9.4309)
 
-[node name="Camera" type="Node3D" parent="."]
+[node name="floatingduck2" parent="." instance=ExtResource("5_7u0a3")]
+transform = Transform3D(0.276426, 0, -0.961035, 0, 1, 0, 0.961035, 0, 0.276426, 10.6883, 7.77244, 15.9893)
 
-[node name="Camera3D" type="Camera3D" parent="Camera"]
-transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, 0, 5, -10)
+[node name="floatingduck3" parent="." instance=ExtResource("5_7u0a3")]
+transform = Transform3D(0.276426, 0, -0.961035, 0, 1, 0, 0.961035, 0, 0.276426, -0.988119, 7.77244, 24.355)
+
+[node name="floatingduck4" parent="." instance=ExtResource("5_7u0a3")]
+transform = Transform3D(0.798142, 0, -0.60247, 0, 1, 0, 0.60247, 0, 0.798142, 9.16101, 7.77244, 37.6288)
+
+[node name="Angelica" parent="." instance=ExtResource("4_yomvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.64051, 2.58636, 7.71756)
