@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://b867fsdgp2nkc"]
+[gd_scene load_steps=21 format=3 uid="uid://b867fsdgp2nkc"]
 
 [ext_resource type="Script" path="res://World/world.gd" id="1_x06oj"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="2_1x1vh"]
 [ext_resource type="Script" path="res://Water.gd" id="3_4k6wu"]
 [ext_resource type="PackedScene" uid="uid://vjmt1tighhl7" path="res://Player/angelica.tscn" id="4_yomvq"]
 [ext_resource type="PackedScene" uid="uid://b8i1611aicgex" path="res://Player/floatingduck.tscn" id="5_7u0a3"]
+[ext_resource type="PackedScene" uid="uid://67ebfu31x07h" path="res://World/fort-mitsubishi.glb" id="6_0tmti"]
+[ext_resource type="Script" path="res://Player/camera.gd" id="6_yajfd"]
+[ext_resource type="PackedScene" uid="uid://c6ltv1q0j6tbv" path="res://World/torony.glb" id="7_vtl6e"]
+[ext_resource type="PackedScene" uid="uid://da31uuov1mkt2" path="res://Player/bomba.tscn" id="8_mnxa1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eymgo"]
 sky_top_color = Color(0.297397, 0.441353, 0.718357, 1)
@@ -110,3 +114,111 @@ transform = Transform3D(0.798142, 0, -0.60247, 0, 1, 0, 0.60247, 0, 0.798142, 9.
 
 [node name="Angelica" parent="." instance=ExtResource("4_yomvq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.64051, 2.58636, 7.71756)
+
+[node name="fort-mitsubishi" parent="." instance=ExtResource("6_0tmti")]
+transform = Transform3D(5.015, 0, 0, 0, 5.015, 0, 0, 0, 5.015, -46.1984, 0.227901, -39.2809)
+
+[node name="torony" parent="fort-mitsubishi" instance=ExtResource("7_vtl6e")]
+transform = Transform3D(0.059, 0, 0, 0, 0.059, 0, 0, 0, 0.059, -2.40341, 2.16311, -2.22577)
+
+[node name="torony2" parent="fort-mitsubishi" instance=ExtResource("7_vtl6e")]
+transform = Transform3D(0.059, 0, 0, 0, 0.059, 0, 0, 0, 0.059, -2.40341, 2.16311, 2.55987)
+
+[node name="torony3" parent="fort-mitsubishi" instance=ExtResource("7_vtl6e")]
+transform = Transform3D(0.059, 0, 0, 0, 0.059, 0, 0, 0, 0.059, 2.18283, 2.16311, -2.22577)
+
+[node name="torony4" parent="fort-mitsubishi" instance=ExtResource("7_vtl6e")]
+transform = Transform3D(0.059, 0, 0, 0, 0.059, 0, 0, 0, 0.059, 2.18283, 2.16311, 2.55987)
+
+[node name="camera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.64051, 6.19921, 9.77015)
+script = ExtResource("6_yajfd")
+
+[node name="Camera3D" type="Camera3D" parent="camera"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -7.71251)
+
+[node name="bombs" type="Node3D" parent="."]
+
+[node name="floatingduck5" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2248, 0, -45.8053)
+
+[node name="floatingduck6" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6351, 0, -38.3783)
+
+[node name="floatingduck7" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.136, 0, -51.9738)
+
+[node name="floatingduck8" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2474, 0, -27.7932)
+
+[node name="floatingduck9" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6404, 0, -15.4545)
+
+[node name="floatingduck10" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4335, 0, -19.851)
+
+[node name="floatingduck11" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6347, 0, -29.1485)
+
+[node name="floatingduck12" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6347, 0, -15.1485)
+
+[node name="floatingduck13" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.9027, 0, -11.9271)
+
+[node name="floatingduck14" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2218, 0, -10.9217)
+
+[node name="floatingduck15" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.2218, 0, -10.9217)
+
+[node name="floatingduck16" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.1198, 0, -15.6467)
+
+[node name="floatingduck17" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.1198, 0, -15.6467)
+
+[node name="floatingduck18" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -69.3627, 0, -33.4097)
+
+[node name="floatingduck19" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -70.9364, 0, -40.8401)
+
+[node name="floatingduck20" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -71.4649, 0, -27.2457)
+
+[node name="floatingduck21" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -70.3011, 0, -51.4239)
+
+[node name="floatingduck22" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -66.8815, 0, -63.7552)
+
+[node name="floatingduck23" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -72.0978, 0, -59.3699)
+
+[node name="floatingduck24" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -76.9168, 0, -50.0829)
+
+[node name="floatingduck25" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -57.8865, 0, -64.0418)
+
+[node name="floatingduck26" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -30.6116, 0, -67.2041)
+
+[node name="floatingduck31" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -24.0371, 0, -59.8536)
+
+[node name="floatingduck32" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -69.3059, 0, -17.0471)
+
+[node name="floatingduck27" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -51.2903, 0, -68.2543)
+
+[node name="floatingduck28" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -39.2903, 0, -68.2283)
+
+[node name="floatingduck29" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -45.4025, 0, -63.5165)
+
+[node name="floatingduck30" parent="bombs" instance=ExtResource("8_mnxa1")]
+transform = Transform3D(-0.999998, 0, 0.00216428, 0, 1, 0, -0.00216428, 0, -0.999998, -45.4025, 0, -63.5165)
